@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Transaction from './transaction.js'
+
+
 
 Vue.config.productionTip = false
 

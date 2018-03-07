@@ -1,62 +1,41 @@
 <template>
   <section>
 
-    <table class="table table-striped">
-      <thead class="thead-dark">
-          <th>Id</th>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Date</th>
-          <th>Category</th>
-      </thead>
-      <tbody>
-          <tr v-for="transaction of transactions" :key="transaction.id">
-            <td>{{transaction.id}}</td>
-            <td>{{transaction.name}}</td>
-            <td>{{transaction.amount}}</td>
-            <td>{{transaction.date}}</td>
-            <td>{{transaction.category}}</td>
-          </tr>
-      </tbody>
-    </table>
-
-      <transactions></transactions>
+    <transactions @add="add" ></transactions>
+    <consulttrans :transactions="transactions" @remove="remove(index)"></consulttrans>
       
 </section>
+
 </template>
-
-
-
 
 
 <script>
 import transactions from "./transactions.vue";
+import consulttrans from "./consulttrans.vue";
+
+// import Transaction from "../transaction.js";
 
 export default {
     name: "balance", 
     components: {
-       transactions
+      transactions,
+      consulttrans
     }, 
-    data:function(){
+    data(){
       return {
-        transactions:[
-          {id:0, name: "rent", amount: -300, date: "2018/12/25", category:"rent"},
-          {id:1, name: "casino", amount: -3, date: "2018/12/25", category:"food"}
-        ]
+        transactions:[]        
       }
+       
     }, 
     methods:{
-        addTrans(transaction){
-					this.transaction.push(transaction)
+        add(transaction){
+					this.transactions.push(transaction)
 				},
-        removeTrans(transaction){
-						this.transactions = this.transactions.filter(transaction => transaction.id !== transaction.id)
-        }
+       remove(index){
+        this.transactions.splice(index, 1)
     }
   }
-
-
-
+}
 </script>
 
 <style lang="scss">

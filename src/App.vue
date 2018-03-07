@@ -7,17 +7,18 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
+
 import balance from './components/balance.vue';
+import Transaction from "./transaction.js";
 
 export default {
-  name: 'app',
-  components: {
-    // HelloWorld, 
-    balance
-  }
+    name: 'app',
+    components: {
+      balance
+    }
 }
 </script>
+
 
 <style>
 #app {
